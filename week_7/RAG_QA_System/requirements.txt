@@ -1,0 +1,20 @@
+# Embedding model (runs locally, downloads weights from Hugging Face Hub on first run)
+sentence-transformers>=2.7.0
+
+# Vector similarity search engine
+faiss-cpu>=1.8.0
+
+# PDF text extraction (for ingesting PDF documents)
+pypdf>=4.2.0
+
+# Keyword search for hybrid retrieval (BM25 algorithm)
+rank-bm25>=0.2.2
+
+# Numerical operations on embedding vectors
+numpy>=1.26.0
+
+# Anthropic API client (one of the two supported LLM backends for generation)
+anthropic>=0.34.0
+
+# HTTP client (used to call a local Ollama server, the other supported LLM backend)
+requests>=2.31.0

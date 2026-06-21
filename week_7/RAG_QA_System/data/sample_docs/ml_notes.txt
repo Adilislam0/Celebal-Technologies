@@ -1,0 +1,29 @@
+Convolutional Neural Networks (CNNs)
+
+Convolutional Neural Networks are a class of deep learning models designed primarily for processing grid-like data such as images. Unlike fully connected networks, CNNs exploit spatial locality by applying small learnable filters (kernels) that slide across the input, detecting local patterns such as edges, textures, and shapes. Early layers typically learn low-level features like edges and color gradients, while deeper layers combine these into high-level representations such as object parts or entire objects.
+
+The key architectural components of a CNN are convolutional layers, pooling layers, and fully connected layers. Convolutional layers apply filters across the input to produce feature maps. Pooling layers (commonly max pooling) downsample these feature maps, reducing spatial dimensions and providing a degree of translation invariance. Fully connected layers, typically placed near the end of the network, combine the extracted features to produce final predictions such as class probabilities.
+
+Parameter sharing is a major efficiency advantage of CNNs over fully connected networks. A single filter is reused across every spatial location in the input, meaning the number of parameters does not scale with image size. This dramatically reduces overfitting risk on image data compared to a fully connected network with an equivalent receptive field.
+
+Autoencoders and Denoising Autoencoders
+
+An autoencoder is a neural network trained to reconstruct its input through a bottleneck representation. It consists of an encoder, which compresses the input into a lower-dimensional latent representation, and a decoder, which reconstructs the original input from that latent code. The bottleneck forces the network to learn a compressed, informative representation of the data rather than memorizing it.
+
+A denoising autoencoder is trained on a modified objective: the input is deliberately corrupted with noise, and the network must reconstruct the original, clean version. This forces the latent representation to capture robust, noise-invariant features rather than superficial pixel-level details. Denoising autoencoders are commonly evaluated using reconstruction loss metrics such as mean squared error between the original and reconstructed image, and they are useful both for denoising tasks and as a pretraining strategy for downstream classification.
+
+Ensemble Methods: Bagging and Boosting
+
+Ensemble methods combine multiple base models to produce a prediction that is generally more robust than any single model. Bagging (Bootstrap Aggregating) trains multiple independent models on different bootstrap samples of the training data and averages their predictions. Random Forest is the canonical bagging algorithm, using decision trees as base learners with additional randomness introduced via random feature subsets at each split.
+
+Boosting, in contrast, trains models sequentially, where each new model focuses on correcting the errors of the previous ensemble. Gradient boosting methods such as XGBoost, LightGBM, and CatBoost build an additive ensemble of weak learners (typically shallow decision trees), where each tree is fit to the residual errors of the current ensemble using gradient descent in function space. Boosting tends to achieve lower bias than bagging but is more prone to overfitting if not properly regularized through learning rate, tree depth, and early stopping.
+
+Handling Class Imbalance
+
+Severe class imbalance, where one class vastly outnumbers another (for example, a 100:1 ratio in fraud or anomaly detection), causes standard classifiers to bias predictions toward the majority class. Common mitigation strategies include resampling techniques (oversampling the minority class via SMOTE, or undersampling the majority class), cost-sensitive learning (assigning higher misclassification penalties to the minority class), and using evaluation metrics that are robust to imbalance such as precision-recall AUC or F1 score rather than raw accuracy, which can be misleadingly high even when the minority class is never correctly predicted.
+
+Retrieval-Augmented Generation (RAG)
+
+Retrieval-Augmented Generation is an architecture that combines a retrieval system with a generative language model. Instead of relying solely on knowledge encoded in the model's parameters during training, a RAG system retrieves relevant text passages from an external knowledge source at inference time and conditions the language model's generation on that retrieved context. This allows the system to answer questions about information that was never part of the model's training data, and to update its knowledge simply by updating the underlying document store rather than retraining the model.
+
+A typical RAG pipeline consists of an embedding model that converts text into dense vector representations, a vector database that stores these embeddings and supports efficient similarity search, a retriever that finds the most relevant chunks for a given query, and a generator (the language model) that synthesizes a final answer using both the query and the retrieved context. Chunking strategy, embedding model choice, and retrieval quality all directly affect the accuracy of the final generated answer, since the generator can only be as good as the context it receives.
