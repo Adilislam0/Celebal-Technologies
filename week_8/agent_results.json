@@ -1,0 +1,35 @@
+[
+  "",
+  {
+    "query": "Explain LoRA and why it is more efficient than full fine-tuning.",
+    "answer": "**LoRA (Low‑Rank Adaptation)**  \n- Adds two trainable low‑rank matrices:  \n  - **A** of shape \\(d \\times r\\)  \n  - **B** of shape \\(r \\times k\\)  \n- These are appended to frozen pretrained weight matrices.  \n- During fine‑tuning only \\(A\\) and \\(B\\) are updated; the original weights \\(W\\) remain fixed.  \n- At inference the effective weight is \\(W + AB\\), so no additional inference latency is incurred.  \n\n**Why LoRA is more efficient than full fine‑tuning**  \n| Aspect | Full fine‑tuning | LoRA |\n|--------|------------------|------|\n| **Parameters updated** | All weights in \\(W\\) | Only \\(A\\) and \\(B\\) (≈ 10,000× fewer parameters) |\n| **Storage requirement** | Full‑size weight matrix | Small low‑rank matrices plus the frozen base model |\n| **Inference cost** | Same as base model | Same as base model (no extra latency) |\n| **Hardware needs** | Large GPU memory for full model updates | Minimal memory, enabling 70 B model fine‑tuning on a single consumer GPU when combined with QLoRA’s 4‑bit quantization |\n\nThus, LoRA achieves substantial parameter‑efficiency and memory savings while keeping inference performance unchanged.",
+    "confidence": 1,
+    "iterations": 1,
+    "docs_retrieved": 1,
+    "route": "kb_search"
+  },
+  {
+    "query": "How does the ReAct framework terminate its agent loop?",
+    "answer": "**ReAct loop termination**\n\n- The ReAct loop keeps repeating **Thought → Action → Observation** cycles.  \n- It terminates **when the LLM produces a final answer** (i.e., an output that is not a `tool_call`).  \n- No further tool calls are issued, and the loop exits with that final answer.",
+    "confidence": 0.67,
+    "iterations": 1,
+    "docs_retrieved": 3,
+    "route": "kb_search"
+  },
+  {
+    "query": "What metrics does RAGAS use to evaluate RAG systems?",
+    "answer": "Insufficient context.",
+    "confidence": 0,
+    "iterations": 1,
+    "docs_retrieved": 0,
+    "route": "reason_only"
+  },
+  {
+    "query": "What is the difference between LangGraph and LCEL?",
+    "answer": "**Difference between LangGraph and LCEL**\n\n| Feature | LangGraph | LCEL (Linear Chain) |\n|---------|-----------|---------------------|\n| **Structure** | Directed graph (nodes + edges) | Straight‑line (sequential) chain |\n| **Control flow** | Supports cycles, branching, and conditional edges (via router functions) | Strictly linear, no back‑edges or branches |\n| **State management** | Shared state via `State` (TypedDict) that all nodes can read/write | Each step typically has its own isolated output |\n| **Persistence** | Built‑in checkpointing for pause/resume of agent state | No built‑in persistence; state must be handled externally |\n| **Human‑in‑the‑loop** | Explicit `interrupt_before/after` hooks to insert human input | Not provided by default |\n| **Agent implementation** | Implements agents as a *stateful directed graph* with tool nodes, conditional routing, and persistent checkpointing | Implements agents as a linear sequence of tool calls without state sharing or persistence |\n\nIn summary, LangGraph extends the linear agent model of LCEL by adding a graph‑based workflow, shared mutable state, conditional branching, cycle support, persistent checkpointing, and human‑interruption capabilities—all of which are essential for realistic, long‑running agent behavior.",
+    "confidence": 1,
+    "iterations": 1,
+    "docs_retrieved": 2,
+    "route": "kb_search"
+  }
+]
