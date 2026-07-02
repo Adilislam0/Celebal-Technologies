@@ -1,0 +1,20 @@
+# X Education Lead Scoring System — dependencies
+# Python 3.9+
+
+# Core (stdlib only for scoring engine — no heavyweight ML deps required)
+# Testing
+pytest>=7.0
+pytest-cov>=4.0
+
+# Optional: data analysis / notebook exploration
+pandas>=1.5
+numpy>=1.23
+matplotlib>=3.6
+seaborn>=0.12
+scikit-learn>=1.2    # for comparison baseline (LogisticRegression)
+jupyter>=1.0
+
+# Optional: FastAPI serving
+fastapi>=0.100
+uvicorn[standard]>=0.20
+pydantic>=2.0

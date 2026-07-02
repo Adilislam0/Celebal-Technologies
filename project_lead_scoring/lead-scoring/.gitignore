@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Data (large files — add your CSVs locally)
+data/*.csv
+data/*.xlsx
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/*.ipynb
+
+# Env
+.env
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/

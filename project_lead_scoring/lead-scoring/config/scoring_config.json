@@ -1,0 +1,50 @@
+{
+  "weight_engagement_activity": 30.0,
+  "weight_lead_origin_source": 20.0,
+  "weight_demographic_fit": 20.0,
+  "weight_behavioral_signals": 15.0,
+  "weight_opt_in_recency": 15.0,
+
+  "max_visits_for_full_score": 10,
+  "max_time_for_full_score": 2000,
+  "max_pvpv_for_full_score": 5.0,
+
+  "source_scores": {
+    "Welingak Website":  1.0,
+    "Reference":         0.9,
+    "Olark Chat":        0.8,
+    "Google":            0.7,
+    "Organic Search":    0.65,
+    "Direct Traffic":    0.6,
+    "Facebook":          0.4,
+    "Other":             0.3,
+    "Unknown":           0.2
+  },
+
+  "occupation_scores": {
+    "Working Professional": 1.0,
+    "Businessman":          0.85,
+    "Unemployed":           0.60,
+    "Student":              0.50,
+    "Housewife":            0.40,
+    "Other":                0.35,
+    "Unknown":              0.20
+  },
+
+  "activity_scores": {
+    "Converted to Lead":              1.0,
+    "Form Submitted on Website":      0.95,
+    "Email Link Clicked on Website":  0.85,
+    "Olark Chat Conversation":        0.80,
+    "Page Visited on Website":        0.60,
+    "Email Opened":                   0.50,
+    "SMS Sent":                       0.35,
+    "Email Bounced":                  0.05,
+    "Other":                          0.25,
+    "Unknown":                        0.10
+  },
+
+  "tier_hot":          75.0,
+  "tier_warm":         50.0,
+  "tier_cold":         25.0
+}
